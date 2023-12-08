@@ -63,8 +63,12 @@ module.exports = {
     // options below to some value.
     //
     development: {
-     provider: () => new HDWalletProvider(process.env.WALLET_PRIV_DEV, process.env.RPC_URL_DEV),     // Localhost (default: none)
-     network_id: "*",       // Any network (default: none)
+      provider: () => new HDWalletProvider(
+        {
+          privateKeys: [process.env.WALLET_PRIV_DEV],
+          url: process.env.RPC_URL_DEV
+        }),
+      network_id: "*",       // Any network (default: none)
     },
     //
     // An additional network, but with some advanced options…

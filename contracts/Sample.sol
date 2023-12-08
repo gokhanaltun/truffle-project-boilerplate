@@ -8,9 +8,9 @@ contract Sample {
 
     address public immutable owner;
 
-    event EchoEvent(string _message);
+    event EchoEvent(address indexed _sender, string _message);
 
     function echo(string memory _message) external {
-        emit EchoEvent(_message);
+        emit EchoEvent(msg.sender, _message);
     }
 }

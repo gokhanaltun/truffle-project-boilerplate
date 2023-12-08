@@ -1,4 +1,4 @@
-require("dotenv").config({path: "../.env"});
+require("dotenv").config({ path: "../.env" });
 const env = process.env;
 const sample_abi = require("../build/contracts/Sample.json");
 const { Web3 } = require('web3');
@@ -15,6 +15,17 @@ interact = async () => {
         from: account.address,
         gas: 1000000
     }).then(console.log);
+
+    const events = await contract.getPastEvents("EchoEvent",
+        {
+            filter: { _sender: account.address },
+            fromBlock: 0,
+            toBlock: 'latest'
+        }
+    )
+
+    console.log(events);
+    console.log(events[0].returnValues);
 
 }
 

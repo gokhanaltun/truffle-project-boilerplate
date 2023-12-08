@@ -4,6 +4,7 @@ contract("Sample", accounts => {
   it("sample echo test", async () => {
     let instance = await sample.deployed();
 
+    const sender = process.env.WALLET_PRIV_DEV;
     const message = "Hello, world!";
 
     const result = await instance.echo(message);
@@ -12,5 +13,6 @@ contract("Sample", accounts => {
     const event = result.logs[0];
     assert.equal(event.event, "EchoEvent", "Event is not EchoEvent");
     assert.equal(event.args._message, message, "Incorrect _message value");
+    assert.equal(event.args._sender, sender, "Incorrect _sender value");
   });
 });

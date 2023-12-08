@@ -63,8 +63,7 @@ module.exports = {
     // options below to some value.
     //
     development: {
-     host: () => new HDWalletProvider(process.env.WALLET_PRIV_DEV, process.env.RPC_URL_DEV),     // Localhost (default: none)
-     //port: 7545,            // Standard Ethereum port (default: none)
+     provider: () => new HDWalletProvider(process.env.WALLET_PRIV_DEV, process.env.RPC_URL_DEV),     // Localhost (default: none)
      network_id: "*",       // Any network (default: none)
     },
     //

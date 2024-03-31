@@ -4,7 +4,7 @@ const sample_abi = require("../build/contracts/Sample.json");
 const { Web3 } = require('web3');
 
 
-interact = async () => {
+const interact = async () => {
     const web3 = new Web3('http://localhost:7545');
     const account = web3.eth.accounts.privateKeyToAccount(env.WALLET_PRIV_DEV);
     const contract = new web3.eth.Contract(sample_abi.abi, env.CONTRACT_ADDRESS_DEV);
